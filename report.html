@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#F5F1EB">
+  <title>测评报告</title>
+  <link rel="stylesheet" href="assets/app.css">
+</head>
+<body data-page="report">
+  <div class="app">
+    <header class="navbar">
+      <div class="navbar__back" onclick="backHistory()">返回</div>
+      <h1 class="navbar__title">测评报告</h1>
+      <span class="navbar__date" id="reportDate"></span>
+    </header>
+
+    <nav class="tabbar" id="report-tabbar">
+      <div class="tab active" data-report="overview">总览</div>
+      <div class="tab" data-report="interpret">因子解读</div>
+      <div class="tab" data-report="feed">相关推荐</div>
+      <div class="tab" data-report="severe">高危提示</div>
+    </nav>
+
+    <main class="content" id="report-root" style="padding-bottom:40px"></main>
+
+    <footer class="bottom-action" id="report-footer">
+      <button class="btn-primary" onclick="retest()">复测</button>
+      <p class="retest-tip">建议 2-4 周后复测，观察变化趋势</p>
+    </footer>
+  </div>
+  <script src="assets/questions.js"></script>
+  <script src="assets/app.js"></script>
+  <script>
+    function backHistory() { if (document.referrer) history.back(); else location.href = 'history.html'; }
+    function retest() { location.href = 'quiz.html'; }
+  </script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#F5F1EB">
+  <title>心理健康测评</title>
+  <link rel="stylesheet" href="assets/app.css">
+</head>
+<body data-page="home">
+  <div class="app">
+    <header class="nav-brand-bar">
+      <h1 class="nb-title">心理健康测评</h1>
+      <span class="nb-link" style="font-size:14px;color:var(--brand);cursor:pointer" onclick="location.href='history.html'">记录</span>
+    </header>
+
+    <nav class="tabbar" id="home-tabbar">
+      <div class="tab active" data-tab="intro">介绍</div>
+      <div class="tab" data-tab="who">适合人群</div>
+      <div class="tab" data-tab="dims">九大维度</div>
+    </nav>
+
+    <main class="content" id="home-content"></main>
+
+    <footer class="bottom-bar">
+      <button class="btn-primary" onclick="startQuiz()">开始测评</button>
+      <p class="bottom-note">本测评结果仅作自我参考，不能替代专业医疗诊断</p>
+    </footer>
+  </div>
+  <script src="assets/questions.js"></script>
+  <script src="assets/app.js"></script>
+  <script>
+    function startQuiz() {
+      // 已有进行中的作答 → 断点续答
+      const p = Store.progress.get();
+      if (p && Object.keys(p.answers).length) {
+        Store.set('resumeFlag', true);
+        location.href = 'quiz.html';
+      } else {
+        location.href = 'quiz.html';
+      }
+    }
+  </script>
+</body>
+</html>
